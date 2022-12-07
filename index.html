@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name = "keywords" content="travel, Russia, beautiful places, world, geography, photo">
+    <meta name = "author" content="Marina Privalova">
+    <meta name="description" content="Фотографии красивых и интересных мест В России.">
+    <link rel="stylesheet" href="./pages/index.css">
+    <title>Mesto</title>
+</head>
+<body class="page">
+    <div class="page__container">
+        <header class="header">
+           <img class="header__logo" src="./images/header_logo.png" alt="Логотип Место Россия">
+        </header>
+        <main class="content">
+            <section class="profile">
+                <div class="profile__container">
+                    <img class="profile__avatar" src="./images/avatar.jpg" alt="Фотография профиля">
+                    <div class="profile__info">
+                        <div class="profile__edit-name">
+                            <p class="profile__name">Жак-Ив Кусто</p>
+                            <button class="profile__edit-button" type="button">
+                                <img class="profile__edit-button-image" src="./images/pencil_button.png" alt="Кнопка редактирования">
+                            </button>
+                        </div>
+                        <p class="profile__vocation">Исследователь океана</p>
+                    </div>
+                </div>
+                    <button class="profile__add-button" type="button">
+                        <img class="profile__add-button-image" src="./images/add_button.png" alt="Кнопка добавления фотографии">
+                    </button>
+            </section>
+            <section class="photo-grid">
+                <div class="photo-grid__card">
+                    <img class="photo-grid__card-photo" src="./images/altai.jpg" alt="Алтайское зелёное поле и гора">
+                    <div class="photo-grid__card-container">
+                        <h2 class="photo-grid__card-title">Алтай</h2>
+                        <button class="photo-grid__card-button" type="button"></button>
+                    </div>
+                </div>
+                <div class="photo-grid__card">
+                    <img class="photo-grid__card-photo" src="./images/baikal_lake.jpg" alt="Вид сверху на озеро Байкал и горный склон">
+                    <div class="photo-grid__card-container">
+                        <h2 class="photo-grid__card-title">Озеро Байкал</h2>
+                        <button class="photo-grid__card-button" type="button"></button>
+                    </div>
+                </div>
+                <div class="photo-grid__card">
+                    <img class="photo-grid__card-photo" src="./images/karach-Cherkess.jpg" alt="Горы Карачаево-Черкесии">
+                    <div class="photo-grid__card-container">
+                        <h2 class="photo-grid__card-title">Карачаево-Черкесская Республика</h2>
+                        <button class="photo-grid__card-button" type="button"></button>
+                    </div>
+                </div>
+                <div class="photo-grid__card">
+                    <img class="photo-grid__card-photo" src="./images/ladoga_lake.jpg" alt="Маяк и Ладожское озеро">
+                    <div class="photo-grid__card-container">
+                        <h2 class="photo-grid__card-title">Ладожское озеро</h2>
+                        <button class="photo-grid__card-button" type="button"></button>
+                    </div>
+                </div>
+                <div class="photo-grid__card">
+                    <img class="photo-grid__card-photo" src="./images/sihote_alin.jpg" alt="Горный хребет Сихотэ-Алинь">
+                    <div class="photo-grid__card-container">
+                        <h2 class="photo-grid__card-title">Сихотэ-Алинь</h2>
+                        <button class="photo-grid__card-button" type="button"></button>
+                    </div>
+                </div>
+                <div class="photo-grid__card">
+                    <img class="photo-grid__card-photo" src="./images/sulak-kanion.jpg" alt="Вид сверху на Сулакский каньон с катерами">
+                    <div class="photo-grid__card-container">
+                        <h2 class="photo-grid__card-title">Сулакский каньон </h2>
+                        <button class="photo-grid__card-button" type="button"></button>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <footer class="footer">
+            <p class="footer__text">© 2022 Mesto Russia</p>
+        </footer>
+        <div class="popup">
+            <div class="popup__container">
+                <button class="popup__close-button"></button>
+                <div class="popup__form-container">
+                    <h2 class="popup__title">Редактировать профиль</h2>
+                    <form class="popup__form" form action="" method="get">
+                        <label for="name"></label>
+                        <input class="popup__input" type="text" name="name" id="name" placeholder="Укажите своё имя" required="">
+                        <label for="vocation"></label>
+                        <input class="popup__input" type="text" name="vocation" id="vocation" placeholder="Укажите род деятельности" required="">
+                        <button class="popup__save-button" type="submit">Сохранить</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,7 @@
+.photo-grid__card-container {
+    display: flex;
+    justify-content: space-between;
+    max-width: 243px;
+    margin: 25px auto 31px;
+    align-items: center;
+}

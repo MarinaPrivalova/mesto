@@ -1,0 +1,14 @@
+.popup__container {
+    display: flex;
+    margin-top: 195px;
+    margin-bottom: 195px;
+    position: relative;
+}
+
+@media screen and (max-width: 536px) {
+    .popup__container {
+        margin-top: 123px;
+        margin-bottom: 123px;
+    }
+}
+
