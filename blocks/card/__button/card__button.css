@@ -1,20 +1,20 @@
-.photo-grid__card-button {
+.card__button {
     min-width: 26px;
     min-height: 19px;
     padding: 0;
     border: none;
-    background-color: #FFFFFF;
+    background-color: transparent;
     background-image: url(../../../images/heart_button.svg);
     background-size: 22px 19px;
     background-position: center;
     background-repeat: no-repeat;
 }
 
-.photo-grid__card-button:hover {
+.card__button:hover {
     opacity: 0.5;
     cursor: pointer;
 }
 
-.photo-grid__card-button:active {
+.card__button:active {
     background-color: #000000;
 }

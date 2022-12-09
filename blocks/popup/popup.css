@@ -13,3 +13,9 @@
     height: 100%;
     margin: auto;
 }
+
+@media screen and (max-width: 536px) {
+    .popup {
+        max-height: 568px;
+    }
+}
