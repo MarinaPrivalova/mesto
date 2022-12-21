@@ -43,7 +43,6 @@ const nameInput = document.querySelector('.popup__input_type_user-name'); //ин
 const jobInput = document.querySelector('.popup__input_type_vocation'); //инпут редактирования профессии профиля
 const cardNameInput = document.querySelector('.popup__input_type_image-name'); //инпут добавления названия карточки
 const cardLinkInput = document.querySelector('.popup__input_type_image-link'); //инпут добавления ссылки на фото
-const buttonLike = document.querySelector('.card__button-like'); //кнопка лайк
 const cardGalegy =document.querySelector('.photo__list'); //галерея карточек
 
 //открыть попап
@@ -76,22 +75,32 @@ function handleFormSubmit (evt) {
     closePopup(popup)
 }
 
-//лайкнуть фото
-function likePhoto() {
-    buttonLike.classList.toggle('.card__button-like_active');
-}
-
 //добавить карточки
 const getCard = initialCards.forEach(function getCardElement(item) {
     const cardTemplate = document.querySelector('#card').content; //получить содержимое template
     const cardElement = cardTemplate.querySelector('.card').cloneNode(true); //клонировать элементы карточки
-    cardElement.querySelector('.card__photo').src = item.link; //ссылка из массива initialCards
-    cardElement.querySelector('.card__photo').alt = item.name; //имя из массива initialCards
-    cardElement.querySelector('.card__title').textContent = item.name; //имя из массива initialCards
+    const link = cardElement.querySelector('.card__photo');
+    const name = cardElement.querySelector('.card__title');
+    const buttonLike = cardElement.querySelector('.card__button-like');
+    const buttonTrash = cardElement.querySelector('.card__button-trash');
+
+    link.src = item.link; //получить данные из initialCards
+    link.alt = item.name;
+    name.textContent = item.name;
+
+    buttonLike.addEventListener('click', function(evt) {
+      evt.target.classList.toggle('card__button-like_active'); //лайк фото
+    });
+
+    buttonTrash.addEventListener('click', function(evt) {
+      const targetItem = evt.target.closest('.card'); //удаление карточки
+      targetItem.remove();
+    });  
+
     cardGalegy.append(cardElement); //добавление элементов в список
   }); 
 
-buttonLike.addEventListener('click', likePhoto);
+
 
 buttonOpenEditProfile.addEventListener('click', () => {openPopup(popupEditProfile); popupLoadData()});
 buttonClose.addEventListener('click', () => {closePopup(popupEditProfile); deleteUnsavedData()});
