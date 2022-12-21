@@ -1,4 +1,4 @@
-.card__button {
+.card__button-like {
     min-width: 26px;
     min-height: 19px;
     padding: 0;
@@ -10,11 +10,7 @@
     background-repeat: no-repeat;
 }
 
-.card__button:hover {
+.card__button-like:hover {
     opacity: 0.5;
     cursor: pointer;
-}
-
-.card__button:active {
-    background-color: #000000;
 }

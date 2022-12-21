@@ -26,61 +26,42 @@
                 </div>
                     <button class="profile__add-button" type="button" aria-label="Добавить"></button>
             </section>
-            <section class="photo-grid">
-                <div class="card">
-                    <img class="card__photo" src="./images/altai.jpg" alt="Алтайское зелёное поле и гора">
-                    <div class="card__container">
-                        <h2 class="card__title">Алтай</h2>
-                        <button class="card__button" type="button" aria-label="Нравится"></button>
-                    </div>
-                </div>
-                <div class="card">
-                    <img class="card__photo" src="./images/baikal_lake.jpg" alt="Вид сверху на озеро Байкал и горный склон">
-                    <div class="card__container">
-                        <h2 class="card__title">Озеро Байкал</h2>
-                        <button class="card__button" type="button" aria-label="Нравится"></button>
-                    </div>
-                </div>
-                <div class="card">
-                    <img class="card__photo" src="./images/karach-cherkessia.jpg" alt="Горы Карачаево-Черкесии">
-                    <div class="card__container">
-                        <h2 class="card__title">Карачаево-Черкесская Республика</h2>
-                        <button class="card__button" type="button" aria-label="Нравится"></button>
-                    </div>
-                </div>
-                <div class="card">
-                    <img class="card__photo" src="./images/ladoga_lake.jpg" alt="Маяк и Ладожское озеро">
-                    <div class="card__container">
-                        <h2 class="card__title">Ладожское озеро</h2>
-                        <button class="card__button" type="button" aria-label="Нравится"></button>
-                    </div>
-                </div>
-                <div class="card">
-                    <img class="card__photo" src="./images/sihote_alin.jpg" alt="Горный хребет Сихотэ-Алинь">
-                    <div class="card__container">
-                        <h2 class="card__title">Сихотэ-Алинь</h2>
-                        <button class="card__button" type="button" aria-label="Нравится"></button>
-                    </div>
-                </div>
-                <div class="card">
-                    <img class="card__photo" src="./images/sulak-kanion.jpg" alt="Вид сверху на Сулакский каньон с катерами">
-                    <div class="card__container">
-                        <h2 class="card__title">Сулакский каньон </h2>
-                        <button class="card__button" type="button" aria-label="Нравится"></button>
-                    </div>
-                </div>
+            <section class="photo">
+                <ul class="photo__list">
+                    <template id="card">
+                        <li class="card">
+                            <img class="card__photo" src="#" alt="#">
+                            <div class="card__container">
+                                <h2 class="card__title"></h2>
+                                <button class="card__button-like" type="button" aria-label="Нравится"></button>
+                                <button class="card__button-trash" type="button" aria-label="Удалить"></button>
+                            </div>
+                        </li>
+                    </template>
+                </ul>
             </section>
         </main>
         <footer class="footer">
             <p class="footer__text">© 2022 Mesto Russia</p>
         </footer>
-        <div class="popup">
+        <div class="popup popup_type_edit">
             <div class="popup__container">
                 <button class="popup__close-button" aria-label="Закрыть"></button>
                 <h3 class="popup__title">Редактировать профиль</h3>
                 <form class="popup__form" action="#" method="get">
-                    <input class="popup__input" type="text" name="username" id="username" placeholder="Укажите своё имя" required="">
-                    <input class="popup__input" type="text" name="vocation" id="vocation" placeholder="Укажите род деятельности" required="">
+                    <input class="popup__input popup__input_type_user-name" type="text" name="username" id="username" placeholder="Укажите своё имя" required="">
+                    <input class="popup__input popup__input_type_vocation" type="text" name="vocation" id="vocation" placeholder="Укажите род деятельности" required="">
+                    <button class="popup__save-button" type="submit">Сохранить</button>
+                </form> 
+            </div>
+        </div>
+        <div class="popup popup_type_new-card">
+            <div class="popup__container">
+                <button class="popup__close-button" aria-label="Закрыть"></button>
+                <h3 class="popup__title">Новое место</h3>
+                <form class="popup__form" action="#" method="get">
+                    <input class="popup__input popup__input_type_image-name" type="text" name="imagename" id="imagename" placeholder="Название" required="">
+                    <input class="popup__input popup__input_type_image-link" type="text" name="imagelink" id="imagelink" placeholder="Ссылка на картинку" required="">
                     <button class="popup__save-button" type="submit">Сохранить</button>
                 </form> 
             </div>
