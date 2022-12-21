@@ -7,6 +7,7 @@
     <meta name = "author" content="Marina Privalova">
     <meta name="description" content="Фотографии красивых и интересных мест в России">
     <link rel="stylesheet" href="./pages/index.css">
+    <script src="./scripts/index.js" defer></script>
     <title>Mesto</title>
 </head>
 <body class="page">
@@ -27,18 +28,7 @@
                     <button class="profile__add-button" type="button" aria-label="Добавить"></button>
             </section>
             <section class="photo">
-                <ul class="photo__list">
-                    <template id="card">
-                        <li class="card">
-                            <img class="card__photo" src="#" alt="#">
-                            <div class="card__container">
-                                <h2 class="card__title"></h2>
-                                <button class="card__button-like" type="button" aria-label="Нравится"></button>
-                                <button class="card__button-trash" type="button" aria-label="Удалить"></button>
-                            </div>
-                        </li>
-                    </template>
-                </ul>
+                <ul class="photo__list"></ul>
             </section>
         </main>
         <footer class="footer">
@@ -67,6 +57,27 @@
             </div>
         </div>
     </div>
-    <script src="./scripts/index.js"></script>
+    <div class="popup popup_type_image popup_opened">
+        <div class="popup__container-image">
+            <button class="popup__close-button" aria-label="Закрыть"></button>
+            <figure class="popup__figure">
+                <img class="popup__image" src="https://images.unsplash.com/photo-1548130729-90d4d11826f8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="#">
+                <figcaption class="popup__image-caption">
+                    <h2 class="popup__image-title">Алтай</h2>
+                </figcaption>
+            </figure>
+        </div>
+    </div>
+</div>
+    <template id="card">
+        <li class="card">
+            <img class="card__photo" src="#" alt="#">
+            <div class="card__container">
+                <h2 class="card__title"></h2>
+                <button class="card__button-like" type="button" aria-label="Нравится"></button>
+                <button class="card__button-trash" type="button" aria-label="Удалить"></button>
+            </div>
+        </li>
+    </template>
 </body>
 </html>
