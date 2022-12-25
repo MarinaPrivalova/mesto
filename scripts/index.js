@@ -1,30 +1,3 @@
-// 6 готовых карточек
-const initialCards = [
-    {
-      name: 'Алтай',
-      link: 'https://images.unsplash.com/photo-1598394188724-cdeb618eb4e7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=773&q=80'
-    },
-    {
-      name: 'Озеро Байкал',
-      link: 'https://images.unsplash.com/photo-1548130729-90d4d11826f8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80'
-    },
-    {
-      name: 'Карачаево-Черкессия',
-      link: 'https://images.unsplash.com/photo-1627327719562-f1f61e8364fb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80'
-    },
-    {
-      name: 'Ладожское озеро',
-      link: 'https://images.unsplash.com/photo-1632212383828-78d78ea41d8d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1632&q=80'
-    },
-    {
-      name: 'Сихотэ-Алинь',
-      link: 'https://images.unsplash.com/photo-1644543419167-2cc7a5738665?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHx2aXN1YWwtc2VhcmNofDF8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60'
-    },
-    {
-      name: 'Сулакский каньон',
-      link: 'https://images.unsplash.com/photo-1598535348425-e76a7cc312d5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80'
-    }
-  ];
 const userName = document.querySelector('.profile__name'); //имя профиля
 const userJob = document.querySelector('.profile__vocation'); //профессия профиля
 const popup = document.querySelector('.popup');
@@ -45,12 +18,12 @@ const popupOpenImage = document.querySelector('.popup_type_image');
 const buttonCloseImage = popupOpenImage.querySelector('.popup__close-button'); //кнопка закрытия попапа открытия карточки
 const popupImage = popupOpenImage.querySelector('.popup__image');
 const popupImageTitle = popupOpenImage.querySelector('.popup__image-title');
-
-const cardTemplate = document.querySelector('#card').content; //получить содержимое template
+//получить содержимое template
+const cardTemplate = document.querySelector('#card').content;
 const cardName = cardTemplate.querySelector ('.card__title');
 const cardPhoto = cardTemplate.querySelector ('.card__photo');
-
-const cardGalegy = document.querySelector('.photo__list'); //галерея карточек
+//галерея карточек
+const cardGalegy = document.querySelector('.photo__list');
 
 //открыть попап
 function openPopup(popup) {
@@ -85,14 +58,14 @@ function handleFormSubmitProfile (evt) {
 //добавить готовые карточки
 function getCardElement(item) {
     const cardElement = cardTemplate.querySelector('.card').cloneNode(true); //клонировать элементы карточки
-    const link = cardElement.querySelector('.card__photo');
-    const name = cardElement.querySelector('.card__title');
+    const cardPhoto = cardElement.querySelector('.card__photo');
+    const cardName = cardElement.querySelector('.card__title');
     const buttonLike = cardElement.querySelector('.card__button-like');
     const buttonTrash = cardElement.querySelector('.card__button-trash');
 
-    link.src = item.link; //получить данные из initialCards
-    link.alt = `На фото ${item.name}`;
-    name.textContent = item.name;
+    cardPhoto.src = item.link; //получить данные из initialCards
+    cardPhoto.alt = `На фото ${item.name}`;
+    cardName.textContent = item.name;
 
     //лайк фото
     buttonLike.addEventListener('click', function(evt) {
@@ -104,6 +77,15 @@ function getCardElement(item) {
       const targetItem = evt.target.closest('.card');
       targetItem.remove();
     });  
+
+    //открыть попап с картинкой
+    cardPhoto.addEventListener('click', function () {
+      popupImage.src = item.link;
+      popupImageTitle.textContent = item.name;
+      popupImage.alt = `На фото ${item.name}`;
+      
+      openPopup(popupOpenImage);
+    });
 
     cardGalegy.append(cardElement); //добавление элементов в список
     return(cardElement);
@@ -133,15 +115,6 @@ function handleFormSubmitCard (evt) {
     closePopup(popupAddNewCard);
 }
 
-//открыть попап с картинкой
-function openCardImage(evt) {
-    popupImage.src = evt.target.src;
-    popupImage.alt = evt.target.alt;
-    popupImageTitle.textContent = evt.target.alt;
-    
-    openPopup(popupOpenImage);
-};
-
 buttonOpenEditProfile.addEventListener('click', () => {openPopup(popupEditProfile); popupLoadData()});
 buttonCloseEditProfile.addEventListener('click', () => {closePopup(popupEditProfile); deleteUnsavedData()});
 formElementProfile.addEventListener('submit', handleFormSubmitProfile);
@@ -150,7 +123,6 @@ buttonOpenAddNewCard.addEventListener('click', () => {openPopup(popupAddNewCard)
 buttonCloseAddNewCard.addEventListener('click', () => {closePopup(popupAddNewCard);});
 formElementCard.addEventListener('submit', handleFormSubmitCard);
 
-cardPhoto.addEventListener('click', openCardImage);
 buttonCloseImage.addEventListener('click', () => {closePopup(popupOpenImage);});
 
 render();
