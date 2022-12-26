@@ -55,8 +55,7 @@ function initProfileForm() {
 
 /**удалить несохранённые данные*/
 function resetProfileForm() {
-  nameInput.value = "";
-  jobInput.value = "";
+  formElementProfile.reset()
 }
 
 /**сохранить данные профиля*/
@@ -68,7 +67,7 @@ function handleFormSubmitProfile(evt) {
 }
 
 /**добавить готовые карточки*/
-function cardData(item) {
+function createCard(cardData) {
   /**клонировать элементы карточки*/
   const cardElement = cardTemplate.cloneNode(true);
   const cardPhoto = cardElement.querySelector(".card__photo");
@@ -76,9 +75,9 @@ function cardData(item) {
   const buttonLike = cardElement.querySelector(".card__button-like");
   const buttonTrash = cardElement.querySelector(".card__button-trash");
   /**получить данные из initialCards*/
-  cardPhoto.src = item.link;
-  cardPhoto.alt = `На фото ${item.name}`;
-  cardName.textContent = item.name;
+  cardPhoto.src = cardData.link;
+  cardPhoto.alt = `На фото ${cardData.name}`;
+  cardName.textContent = cardData.name;
 
   /**лайк фото*/
   buttonLike.addEventListener("click", () => {
@@ -92,9 +91,9 @@ function cardData(item) {
 
   /**открыть попап с картинкой*/
   cardPhoto.addEventListener("click", function () {
-    popupImage.src = item.link;
-    popupImageTitle.textContent = item.name;
-    popupImage.alt = `На фото ${item.name}`;
+    popupImage.src = cardData.link;
+    popupImageTitle.textContent = cardData.name;
+    popupImage.alt = `На фото ${cardData.name}`;
 
     openPopup(popupOpenImage);
   });
@@ -104,7 +103,7 @@ function cardData(item) {
 
 /**функция отрисовки контейнера с карточками*/
 function renderInitialCards() {
-  const cards = initialCards.map(cardData);
+  const cards = initialCards.map(createCard);
   cardsGalegy.append(...cards);
 }
 
@@ -112,7 +111,7 @@ function renderInitialCards() {
 function addNewCard() {
   const nameInput = imageNameInput.value;
   const linkInput = imageLinkInput.value;
-  const newCard = cardData({ name: nameInput, link: linkInput });
+  const newCard = createCard({ name: nameInput, link: linkInput });
   cardsGalegy.prepend(newCard);
   formElementCard.reset();
 }
