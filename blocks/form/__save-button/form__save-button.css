@@ -1,31 +1,31 @@
 .form__save-button {
-    background-color: #000000;
-    border-radius: 2px;
-    border: none;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 1.2;
-    text-align: center;
-    color: #FFFFFF;
-    padding: 0;
-    padding-top: 14px;
-    padding-bottom: 18px;
-    margin-top: 44px;
-    max-width: 358px;
-    width: 100%;
-    max-height: 50px;
+  background-color: #000000;
+  border-radius: 2px;
+  border: none;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.2;
+  text-align: center;
+  color: #ffffff;
+  padding: 0;
+  padding-top: 14px;
+  padding-bottom: 18px;
+  margin-top: 44px;
+  max-width: 358px;
+  width: 100%;
+  max-height: 50px;
 }
 
 .form__save-button:hover {
-    opacity: 0.8;
-    cursor: pointer;
+  opacity: 0.8;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 536px) {
-    .form__save-button {
-        margin-top: 45px;
-        padding-bottom: 14px;
-        font-size: 14px;
-    }
+  .form__save-button {
+    margin-top: 45px;
+    padding-bottom: 14px;
+    font-size: 14px;
+  }
 }

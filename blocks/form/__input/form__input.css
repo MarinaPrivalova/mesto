@@ -1,31 +1,31 @@
 .form__input {
-    border: none;
-    border-bottom: 1px solid rgba(0, 0, 0, .2);
-    color: #000000;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 1.2;
-    max-width: 358px;
-    width: 100%;
-    max-height: 27px;
-    padding: 0;
-    padding-bottom: 13px;
-    margin-bottom: 28px;
-    box-sizing: border-box;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  color: #000000;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.2;
+  max-width: 358px;
+  width: 100%;
+  max-height: 27px;
+  padding: 0;
+  padding-bottom: 13px;
+  margin-bottom: 28px;
+  box-sizing: border-box;
 }
 
 .form__input:last-of-type {
-    margin-bottom: 0;
+  margin-bottom: 0;
 }
 
 .form__input:focus {
-    outline: none;
-    border-bottom: 1px solid rgba(0, 0, 0, .2);
+  outline: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 
 @media screen and (max-width: 536px) {
-    .form__input {
-        max-width: 238px;
-    }
+  .form__input {
+    max-width: 238px;
+  }
 }
