@@ -90,7 +90,7 @@ function createCard(cardData) {
   });
 
   /**открыть попап с картинкой*/
-  cardPhoto.addEventListener("click", function () {
+  cardPhoto.addEventListener("click", () => {
     popupImage.src = cardData.link;
     popupImageTitle.textContent = cardData.name;
     popupImage.alt = `На фото ${cardData.name}`;

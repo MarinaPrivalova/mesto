@@ -5,12 +5,14 @@
   box-sizing: border-box;
   color: #000000;
   max-width: 430px;
+  width: 100%;
   padding: 34px 36px 37px;
   position: relative;
 }
 
 @media screen and (max-width: 536px) {
   .popup__container {
+    max-width: 282px;
     padding: 25px 22px;
   }
 }
