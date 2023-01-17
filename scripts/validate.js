@@ -1,3 +1,12 @@
+/**все нужные функциям классы и селекторы элементов*/
+const settings = {
+  formSelector: '.form',
+  inputSelector: '.form__input',
+  submitButtonSelector: '.form__save-button',
+  inputErrorClass: 'form__input_type_error',
+  errorClass: 'form__input-error'
+};
+
 /**показать сообщение об ошибке*/
 const showInputError = (formElement, inputElement, errorMessage) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
@@ -38,8 +47,8 @@ const setEventListeners  = (formElement) => {
   });
 };
 
-/**включить проверку на формы*/
-const enableValidation = () => {
+/**включить проверку на все формы*/
+const enableValidation = (settings) => {
   const formList = Array.from(document.querySelectorAll('.form'));
   formList.forEach((formElement) => {
     formElement.addEventListener('submit', function (evt) {
@@ -60,16 +69,13 @@ const hasInvalidInput = (inputList) => {
   });
 };
 
-/**блокировать кнопку "Сохранить"*/
+/**блокировать и активировать кнопку "Сохранить"*/
 const toggleButtonState = (inputList, buttonElement) => {
   if (hasInvalidInput(inputList)) {
-  buttonElement.classList.add('form__save-button_inactive');
-  buttonElement.setAttribute('disabled', 'disabled');
-  }
-  else {
-  buttonElement.classList.remove('form__save-button_inactive');
-  buttonElement.removeAttribute('disabled', 'disabled');
+    buttonElement.setAttribute('disabled', 'disabled');
+  } else {
+    buttonElement.removeAttribute('disabled', 'disabled');
   };
 };
 
-enableValidation();
+enableValidation(settings);

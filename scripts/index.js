@@ -40,11 +40,29 @@ const cardsGalegy = document.querySelector(".photo__list");
 /**открыть попап*/
 function openPopup(popup) {
   popup.classList.add("popup_opened");
+  document.addEventListener("mousedown", closePopupByOverlay);
+  document.addEventListener("keydown", closePopupByEsc);
 }
 
 /**закрыть попап*/
 function closePopup(popup) {
   popup.classList.remove("popup_opened");
+  document.removeEventListener("mousedown", closePopupByOverlay);
+  document.removeEventListener("keydown", closePopupByEsc);
+}
+
+/**закрыть попап по клику на оверлей*/
+function closePopupByOverlay(evt) {
+  if (evt.target.classList.contains('popup_opened')) {
+		closePopup(document.querySelector('.popup_opened'));
+  }
+}
+
+/**закрыть попап нажатием на Esc*/
+function closePopupByEsc(evt) {
+  if (evt.key === "Escape") {
+    closePopup(document.querySelector('.popup_opened'));
+  }
 }
 
 /**загрузить данные из профиля*/
@@ -55,7 +73,7 @@ function initProfileForm() {
 
 /**удалить несохранённые данные*/
 function resetProfileForm() {
-  formElementProfile.reset()
+  formElementProfile.reset();
 }
 
 /**сохранить данные профиля*/
