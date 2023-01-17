@@ -1,10 +1,11 @@
 /**все нужные функциям классы и селекторы элементов*/
-const settings = {
+const parameters = {
   formSelector: '.form',
+  setSelector: 'form__set',
   inputSelector: '.form__input',
   submitButtonSelector: '.form__save-button',
   inputErrorClass: 'form__input_type_error',
-  errorClass: 'form__input-error'
+  inputErrorActive: 'form__input-error_active'
 };
 
 /**показать сообщение об ошибке*/
@@ -47,8 +48,20 @@ const setEventListeners  = (formElement) => {
   });
 };
 
+/**очистить ошибки валидации*/
+const clearValidation  = (formElement) => {
+  const inputList = Array.from(formElement.querySelectorAll('.form__input'));
+  const buttonElement = formElement.querySelector('.form__save-button');
+
+  toggleButtonState(inputList, buttonElement);
+
+  inputList.forEach((inputElement) => {
+    hideInputError(formElement, inputElement);
+  });
+};
+
 /**включить проверку на все формы*/
-const enableValidation = (settings) => {
+const enableValidation = (parameters) => {
   const formList = Array.from(document.querySelectorAll('.form'));
   formList.forEach((formElement) => {
     formElement.addEventListener('submit', function (evt) {
@@ -78,4 +91,4 @@ const toggleButtonState = (inputList, buttonElement) => {
   };
 };
 
-enableValidation(settings);
+enableValidation(parameters);

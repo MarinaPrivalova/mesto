@@ -143,11 +143,12 @@ function handleFormSubmitCard(evt) {
 
 buttonOpenEditProfile.addEventListener("click", () => {
   openPopup(popupEditProfile);
-  initProfileForm();
+  initProfileForm()
 });
 buttonCloseEditProfile.addEventListener("click", () => {
   closePopup(popupEditProfile);
   resetProfileForm();
+  clearValidation(formElementProfile);
 });
 formElementProfile.addEventListener("submit", handleFormSubmitProfile);
 
@@ -156,6 +157,8 @@ buttonOpenAddNewCard.addEventListener("click", () => {
 });
 buttonCloseAddNewCard.addEventListener("click", () => {
   closePopup(popupAddNewCard);
+  formElementCard.reset();
+  clearValidation(formElementCard);
 });
 formElementCard.addEventListener("submit", handleFormSubmitCard);
 
