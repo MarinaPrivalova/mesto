@@ -88,7 +88,7 @@ const toggleButtonState = (inputList, buttonElement) => {
     buttonElement.setAttribute('disabled', 'disabled');
   } else {
     buttonElement.removeAttribute('disabled', 'disabled');
-  };
+  }
 };
 
 enableValidation(parameters);
