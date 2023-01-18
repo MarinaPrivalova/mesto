@@ -142,8 +142,10 @@ function handleFormSubmitCard(evt) {
 }
 
 buttonOpenEditProfile.addEventListener("click", () => {
+  const buttonElement = formElementProfile.querySelector('.form__save-button');
+  buttonElement.setAttribute('disabled', 'disabled');
   openPopup(popupEditProfile);
-  initProfileForm()
+  initProfileForm();
 });
 buttonCloseEditProfile.addEventListener("click", () => {
   closePopup(popupEditProfile);
@@ -153,6 +155,8 @@ buttonCloseEditProfile.addEventListener("click", () => {
 formElementProfile.addEventListener("submit", handleFormSubmitProfile);
 
 buttonOpenAddNewCard.addEventListener("click", () => {
+  const buttonElement = formElementCard.querySelector('.form__save-button');
+  buttonElement.setAttribute('disabled', 'disabled');
   openPopup(popupAddNewCard);
 });
 buttonCloseAddNewCard.addEventListener("click", () => {

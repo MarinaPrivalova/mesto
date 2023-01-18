@@ -70,7 +70,7 @@ const enableValidation = (parameters) => {
 
   const fieldsetList = Array.from(formElement.querySelectorAll('.form__set'));
   fieldsetList.forEach((fieldset) => {
-    setEventListeners(fieldset)
+    setEventListeners(fieldset);
   });
   });
 };
