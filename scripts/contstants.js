@@ -1,4 +1,4 @@
-// 6 готовых карточек
+/**6 готовых карточек*/
 const initialCards = [
   {
     name: "Алтай",
@@ -25,3 +25,12 @@ const initialCards = [
     link: "https://images.unsplash.com/photo-1598535348425-e76a7cc312d5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
   },
 ];
+
+/**все нужные функциям классы и селекторы элементов*/
+const validationParameters = {
+  formSelector: '.form',
+  inputSelector: '.form__input',
+  submitButtonSelector: '.form__save-button',
+  inputErrorClass: 'form__input_type_error',
+  inputErrorActive: 'form__input-error_active'
+};
