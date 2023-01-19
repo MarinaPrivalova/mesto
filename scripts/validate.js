@@ -1,25 +1,25 @@
 /**показать сообщение об ошибке*/
-const showInputError = (formElement, inputElement, errorMessage) => {
+const showInputError = (formElement, inputElement, errorMessage, validationParameters) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-  inputElement.classList.add('form__input_type_error');
+  inputElement.classList.add(validationParameters.inputErrorClass);
   errorElement.textContent = errorMessage;
-  errorElement.classList.add('form__input-error_active');
+  errorElement.classList.add(validationParameters.inputErrorActive);
 };
 
 /**скрыть сообщение об ошибке*/
-const hideInputError = (formElement, inputElement) => {
+const hideInputError = (formElement, inputElement, validationParameters) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-  inputElement.classList.remove('form__input_type_error');
-  errorElement.classList.remove('form__input-error_active');
+  inputElement.classList.remove(validationParameters.inputErrorClass);
+  errorElement.classList.remove(validationParameters.inputErrorActive);
   errorElement.textContent = '';
 };
 
 /**проверить валидность поля*/
 const checkInputValidity = (formElement, inputElement) => {
   if (!inputElement.validity.valid) {
-    showInputError(formElement, inputElement, inputElement.validationMessage);
+    showInputError(formElement, inputElement, inputElement.validationMessage, validationParameters);
   } else {
-    hideInputError(formElement, inputElement);
+    hideInputError(formElement, inputElement, validationParameters);
   }
 };
 
@@ -46,7 +46,7 @@ const clearValidation  = (formElement, validationParameters) => {
   toggleButtonState(inputList, buttonElement);
 
   inputList.forEach((inputElement) => {
-    hideInputError(formElement, inputElement);
+    hideInputError(formElement, inputElement, validationParameters);
   });
 };
 
