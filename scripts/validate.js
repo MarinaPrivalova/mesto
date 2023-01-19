@@ -15,7 +15,7 @@ const hideInputError = (formElement, inputElement, validationParameters) => {
 };
 
 /**проверить валидность поля*/
-const checkInputValidity = (formElement, inputElement) => {
+const checkInputValidity = (formElement, inputElement, validationParameters) => {
   if (!inputElement.validity.valid) {
     showInputError(formElement, inputElement, inputElement.validationMessage, validationParameters);
   } else {
@@ -32,7 +32,7 @@ const setEventListeners  = (formElement, validationParameters) => {
 
   inputList.forEach((inputElement) => {
   inputElement.addEventListener('input', function () {
-    checkInputValidity(formElement, inputElement);
+    checkInputValidity(formElement, inputElement, validationParameters);
     toggleButtonState(inputList, buttonElement);
   });
   });
