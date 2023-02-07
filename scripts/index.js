@@ -1,5 +1,6 @@
+import { initialCards, validationParameters} from './contstants.js';
 import { Card } from './Card.js';
-import { initialCards, validationParameters} from './contstants.js'
+import { FormValidator } from './FormValidator.js';
 
 /**имя профиля*/
 const userName = document.querySelector(".profile__name");
@@ -37,6 +38,9 @@ const popupImage = popupOpenImage.querySelector(".popup__image");
 const popupImageTitle = popupOpenImage.querySelector(".popup__image-title");
 /**галерея карточек*/
 const cardsGalegy = document.querySelector(".photo__list");
+
+const editProfileFormValidator = new FormValidator (validationParameters, popupEditProfile);
+const addCardFormValidator = new FormValidator (validationParameters, popupAddNewCard);
 
 /**открыть попап*/
 function openPopup(popup) {
@@ -126,20 +130,20 @@ buttonOpenEditProfile.addEventListener("click", () => {
 buttonCloseEditProfile.addEventListener("click", () => {
   closePopup(popupEditProfile);
   formElementProfile.reset();
-  clearValidation(formElementProfile, validationParameters);
+  editProfileFormValidator.clearValidation();
 });
 formElementProfile.addEventListener("submit", handleFormSubmitProfile);
 
 buttonOpenAddNewCard.addEventListener("click", () => {
   const buttonElement = formElementCard.querySelector('.form__save-button');
-  /*buttonElement.setAttribute('disabled', true);*/
+  buttonElement.setAttribute('disabled', true);
   openPopup(popupAddNewCard);
 });
 buttonCloseAddNewCard.addEventListener("click", () => {
   closePopup(popupAddNewCard);
   formElementCard.reset();
-  /**clearValidation(formElementCard, validationParameters);*/
-});
+  addCardFormValidator.clearValidation();
+ });
 formElementCard.addEventListener("submit", addNewCard);
 
 buttonCloseImage.addEventListener("click", () => {
@@ -147,3 +151,5 @@ buttonCloseImage.addEventListener("click", () => {
 });
 
 
+editProfileFormValidator.enableValidation();
+addCardFormValidator.enableValidation();
