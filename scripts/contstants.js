@@ -1,5 +1,5 @@
 /**6 готовых карточек*/
-const initialCards = [
+export const initialCards = [
   {
     name: "Алтай",
     link: "https://images.unsplash.com/photo-1598394188724-cdeb618eb4e7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=773&q=80",
@@ -27,7 +27,7 @@ const initialCards = [
 ];
 
 /**все нужные функциям классы и селекторы элементов*/
-const validationParameters = {
+export const validationParameters = {
   formSelector: '.form',
   inputSelector: '.form__input',
   submitButtonSelector: '.form__save-button',
