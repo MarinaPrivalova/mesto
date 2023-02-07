@@ -1,4 +1,4 @@
-import { initialCards, validationParameters} from './contstants.js';
+import { initialCards, validationParameters } from './contstants.js';
 import { Card } from './Card.js';
 import { FormValidator } from './FormValidator.js';
 
@@ -115,7 +115,7 @@ function addNewCard(evt) {
   formElementCard.reset();
 }
 
-/**перебрать массив под существующие функции (добавление/удаление/лайк) карточки*/
+/**перебрать массив под существующие функции карточки (добавление/удаление/лайк)*/
 initialCards.forEach((item) => {
   const cardElement = createCard(item.name, item.link);
   addCard(cardElement);

@@ -13,7 +13,7 @@ export class Card {
       .querySelector('.card')
       .cloneNode(true);
 
-      return cardElement;
+    return cardElement;
   }
 
 /**метод, возвращающий готовую разметку карточек*/
