@@ -39,7 +39,7 @@ export class FormValidator {
   }
 
 /**блокировать и активировать кнопку "Сохранить"*/
-  _toggleButtonState() {
+  toggleButtonState() {
     if (this._hasInvalidInput()) {
       this._buttonElement.setAttribute('disabled', true);
     } else {
@@ -49,7 +49,7 @@ export class FormValidator {
 
   /**очистить ошибки валидации*/
   clearValidation() {
-    this._toggleButtonState();
+    this.toggleButtonState();
 
     this._inputList.forEach((inputElement) => {
       this._hideInputError(inputElement);
@@ -61,12 +61,12 @@ export class FormValidator {
   }
 
   _setEventListeners() {
-    this._toggleButtonState();
+    this.toggleButtonState();
 
     this._inputList.forEach((inputElement) => {
       inputElement.addEventListener('input', () => {
         this._checkInputValidity(inputElement);
-        this._toggleButtonState();
+        this.toggleButtonState();
       });
     });
   }

@@ -18,11 +18,11 @@ export class Card {
 
 /**метод, возвращающий готовую разметку карточек*/
   generateCard() {
-    const cardPhoto = this._element.querySelector('.card__photo');
+    this._cardPhoto = this._element.querySelector('.card__photo');
     const cardName = this._element.querySelector('.card__title');
 
-    cardPhoto.src = this._link;
-    cardPhoto.alt = this._name;
+    this._cardPhoto.src = this._link;
+    this._cardPhoto.alt = this._name;
     cardName.textContent = this._name;
 
     this._buttonLike = this._element.querySelector('.card__button-like');
@@ -41,6 +41,7 @@ export class Card {
 /**метод удаления карточки*/
   _deleteCard() {
     this._element.remove();
+    this._element = null;
   }
 
 /**общий слушатель на все методы в карточке*/
@@ -53,7 +54,7 @@ export class Card {
       this._deleteCard();
     });
 
-    this._element.querySelector('.card__photo').addEventListener('click', () => {
+    this._cardPhoto.addEventListener('click', () => {
       this._handleClickCard(this._name, this._link);
     });
   }
