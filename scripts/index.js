@@ -1,4 +1,16 @@
-import { initialCards, validationParameters } from './contstants.js';
+import {
+  initialCards,
+  validationParameters,
+  buttonOpenPopupProfile,
+  formElementProfile,
+  nameInput,
+  jobInput,
+  buttonOpenAddNewCard,
+  formElementCard,
+  imageNameInput,
+  imageLinkInput
+} from './contstants.js';
+
 import Card from './Card.js';
 import Section from './Section.js';
 import PopupWithImage from './PopupWithImage.js';
@@ -6,21 +18,11 @@ import PopupWithForm from './PopupWithForm.js';
 import UserInfo from './UserInfo.js';
 import FormValidator from './FormValidator.js';
 
-/**Профиль пользователя */
-const popupProfile = document.querySelector('.popup_type_edit');
-const buttonOpenPopupProfile = document.querySelector('.profile__edit-button');
-const formElementProfile = popupProfile.querySelector('.form');
-const nameInput = popupProfile.querySelector('.form__input_type_user-name');
-const jobInput = popupProfile.querySelector('.form__input_type_vocation');
-/**Добавление карточки*/
-const popupAddNewCard = document.querySelector('.popup_type_new-card');
-const buttonOpenAddNewCard = document.querySelector('.profile__add-button');
-const formElementCard = popupAddNewCard.querySelector('.form');
-const imageNameInput = formElementCard.querySelector('.form__input_type_image-name');
-const imageLinkInput = formElementCard.querySelector('.form__input_type_image-link');
 /**Валидация форм*/
 const editProfileFormValidator = new FormValidator (validationParameters, formElementProfile);
+editProfileFormValidator.enableValidation();
 const addCardFormValidator = new FormValidator (validationParameters, formElementCard);
+addCardFormValidator.enableValidation();
 
 /**Создать новый элемент класса UserInfo */
 const newUser = new UserInfo({
@@ -94,6 +96,3 @@ buttonOpenAddNewCard.addEventListener('click', () => {
   popupAddCard.open();
   addCardFormValidator.clearValidation();
 })
-
-editProfileFormValidator.enableValidation();
-addCardFormValidator.enableValidation();

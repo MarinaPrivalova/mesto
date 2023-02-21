@@ -35,4 +35,30 @@ const validationParameters = {
   inputErrorActive: 'form__input-error_active'
 };
 
-export { initialCards, validationParameters };
+/**Профиль пользователя */
+const popupProfile = document.querySelector('.popup_type_edit');
+const buttonOpenPopupProfile = document.querySelector('.profile__edit-button');
+const formElementProfile = popupProfile.querySelector('.form');
+const nameInput = popupProfile.querySelector('.form__input_type_user-name');
+const jobInput = popupProfile.querySelector('.form__input_type_vocation');
+/**Добавление карточки*/
+const popupAddNewCard = document.querySelector('.popup_type_new-card');
+const buttonOpenAddNewCard = document.querySelector('.profile__add-button');
+const formElementCard = popupAddNewCard.querySelector('.form');
+const imageNameInput = formElementCard.querySelector('.form__input_type_image-name');
+const imageLinkInput = formElementCard.querySelector('.form__input_type_image-link');
+
+export {
+  initialCards,
+  validationParameters,
+  popupProfile,
+  buttonOpenPopupProfile,
+  formElementProfile,
+  nameInput,
+  jobInput,
+  popupAddNewCard,
+  buttonOpenAddNewCard,
+  formElementCard,
+  imageNameInput,
+  imageLinkInput
+};
