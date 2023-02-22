@@ -27,7 +27,7 @@ const addCardFormValidator = new FormValidator (validationParameters, formElemen
 addCardFormValidator.enableValidation();
 
 /**Создать новый элемент класса UserInfo */
-const newUser = new UserInfo({
+const userProfile = new UserInfo({
   userNameSelector: '.profile__name',
   userJobSelector: '.profile__vocation'
 });
@@ -45,15 +45,14 @@ const popupAddCard = new PopupWithForm('.popup_type_new-card', formSubmitCard);
 const cardsGalegy = new Section({
   items: initialCards,
   renderer: (item) => {
-    cardsGalegy.addItem(createCard(item.name, item.link));
+    addCard(createCard(item.name, item.link));
   },
 }, '.photo__list');
 
 /**создать карточку (новая из формы или из массива)*/
 function createCard(name, link) {
-  const card = new Card(name, link, handleCardClick);
-  const cardElement = card.generateCard();
-  return cardElement;
+  const card = new Card(name, link, '#card', handleCardClick);
+  return card.generateCard();
 };
 
 /**Добавить новую карточку на страницу*/
@@ -66,7 +65,6 @@ cardsGalegy.renderItems();
 function formSubmitCard(evt) {
   const cardElement = createCard(imageNameInput.value, imageLinkInput.value);
   addCard(cardElement);
-  popupAddCard.close();
 }
 
 /**Открыть попап с картинкой*/
@@ -76,16 +74,15 @@ function handleCardClick(name, link) {
 
 /**Добавить первоначальные значения в форму*/
 function handleProfile() {
-  const userData = newUser.getUserInfo();
+  const userData = userProfile.getUserInfo();
   nameInput.value = userData.name;
   jobInput.value = userData.job;
 };
 
 /**Заполнить форму Профиля новыми данными, которые вводит пользователь*/
 function formSubmitProfile(formData) {
-  newUser.setUserInfo(formData);
-  popupEditProfile.close();
-  }
+  userProfile.setUserInfo(formData);
+}
 
 buttonOpenPopupProfile.addEventListener('click', () => {
   editProfileFormValidator.toggleButtonState();
@@ -94,7 +91,6 @@ buttonOpenPopupProfile.addEventListener('click', () => {
 });
 
 buttonOpenAddNewCard.addEventListener('click', () => {
-  formElementCard.reset();
   popupAddCard.open();
   addCardFormValidator.clearValidation();
 })

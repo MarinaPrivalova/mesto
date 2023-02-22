@@ -6,11 +6,10 @@ export default class UserInfo {
 
   /**Вернуть данные пользователя (возможность подставить в форму)*/
   getUserInfo() {
-    const userData = {
+    return {
       name: this._userNameSelector.textContent,
       job: this._userJobSelector.textContent
-    };
-    return userData;
+    }
   }
 
   /**Принять новые данные и добавить на страницу*/

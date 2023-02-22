@@ -1,14 +1,15 @@
 export default class Card {
-  constructor(name, link, handleCardClick) {
+  constructor(name, link, cardSelector, handleCardClick) {
     this._name = name;
     this._link = link;
+    this._cardSelector = cardSelector;
     this._element = this._getTemplate();
     this._handleCardClick = handleCardClick;
   }
 
   _getTemplate() {
     const cardElement = document
-      .querySelector('#card')
+      .querySelector(this._cardSelector)
       .content
       .querySelector('.card')
       .cloneNode(true);
@@ -42,6 +43,9 @@ export default class Card {
   _deleteCard() {
     this._element.remove();
     this._element = null;
+    this._cardPhoto = null;
+    this._buttonLike = null;
+    this._buttonTrash = null;
   }
 
 /**общий слушатель на все методы в карточке*/
