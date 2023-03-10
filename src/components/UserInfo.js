@@ -1,20 +1,26 @@
 export default class UserInfo {
-  constructor({ userNameSelector, userJobSelector}) {
+  constructor({ userNameSelector, userJobSelector, userAvatarSelector}) {
     this._userNameSelector = document.querySelector(userNameSelector);
     this._userJobSelector = document.querySelector(userJobSelector);
+    this._userAvatarSelector = document.querySelector(userAvatarSelector);
+    this._data = {};
   }
 
   /**Вернуть данные пользователя (возможность подставить в форму)*/
   getUserInfo() {
-    return {
-      name: this._userNameSelector.textContent,
-      job: this._userJobSelector.textContent
-    }
+    return this._data;
   }
 
   /**Принять новые данные и добавить на страницу*/
-  setUserInfo({ name, job }) {
-    this._userNameSelector.textContent = name;
-    this._userJobSelector.textContent = job;
+  setUserInfo(data) {
+    this._data = data;
+    this._userNameSelector.textContent = data.name;
+    this._userJobSelector.textContent = data.about;
+  }
+
+  /**Добавить аватар*/
+  setUserAvatar(data) {
+    this._data = data;
+    this._userAvatarSelector.src = data.avatar;
   }
 }
