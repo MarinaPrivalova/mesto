@@ -1,7 +1,6 @@
 import './index.css';
 
 import {
-  initialCards,
   validationParameters,
   profileUser,
   buttonOpenPopupProfile,
@@ -12,8 +11,6 @@ import {
   avatar,
   buttonOpenAddNewCard,
   formElementCard,
-  imageNameInput,
-  imageLinkInput,
   apiParameters
 } from '../utils/contstants.js';
 
@@ -65,35 +62,40 @@ Promise.all([api.getUserInfo(), api.getAllCards()])
     console.log (err);
   })
 
-
 /**Создать карточку (новая из формы или из массива)*/
 function createCard(cardData) {
+  cardData.currentUser = userProfile.getUserInfo();
   const card = new Card(cardData, '#card', {
+    onClick: handleCardClick,
+
     onLike: (currentCardData, likeCallback) => {
       if (card.isLike()) {
         api
           .deleteLike(currentCardData._id)
-          /**Вызвать функцию из Card, которая меняет html*/
+          // вызов  функции из класса Card, которая меняет html
           .then((updatedCard) => likeCallback(updatedCard.likes))
           .catch((err) => {
-            console.log('ERROR', err);
+            console.log('Ошибка', err);
+
           })
       } else {
         api
           .setLike(currentCardData._id)
-          /**Вызвать функцию из Card, которая меняет html*/
+          // вызов  функции из класса Card, которая меняет html
           .then((updatedCard) => likeCallback(updatedCard.likes))
           .catch((err) => {
-            console.log('ERROR', err);
+            console.log('Ошибка', err);
+
           })
       }
     },
-    onClick: handleCardClick,
+
     onDelete: (currentCardData, deleteCallback) => {
       popupDeleteCard.open();
-      popupDeleteCard.setConfirmStep(() => {
+      popupDeleteCard.setConfirmAction(() => {
         api
         .deleteCard(currentCardData._id)
+
         .then(() => {
           popupDeleteCard.close();
           deleteCallback()
@@ -104,8 +106,10 @@ function createCard(cardData) {
       });
     }
   });
+
   /**Задать элемент "карта" и вызвать метод генерации у новой карточки*/
   const cardElement = card.generateCard();
+
   /**Вернуть созданную карточку*/
   return cardElement;
 }
@@ -157,6 +161,7 @@ function formSubmitAvatar({ avatar }) {
 
 /**Добавить новую карточку через форму*/
 function formSubmitCard(data) {
+  popupAddCard.setSavingMode();
   api.addNewCard({ name: data.name, link: data.link })
     .then((res) => {
       cardsGalegy.addItem(createCard(res));
@@ -164,6 +169,7 @@ function formSubmitCard(data) {
     .catch((err) => {
       console.log('ERROR', err);
     })
+    .finally(() => popupAddCard.removeSavingMode())
 };
 
 popupOpenImage.setEventListeners();
