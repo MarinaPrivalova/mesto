@@ -50,4 +50,11 @@
     * Явная привязка контекста. Метод `bind`
     * Webpack. Библиотека пакетов NPM
     * Транспиляция JS: Babel
-
+* Продвинутый JavaScript:
+    * Асинхронные операции
+    * Promise
+    * Работа с API
+    * Запросы из JavaScript: метод `fetch`
+    * Метод `JSON.stringify`
+    * HTTP-запрос. Методы: `GET`, `PATCH`, `POST`, `DELETE`, `PUT`
+* Размещение проекта на сервере. Наcтройка Github Pages

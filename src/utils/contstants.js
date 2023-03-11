@@ -1,4 +1,4 @@
-/**все нужные функциям классы и селекторы элементов*/
+/**Селекторы для валидации*/
 const validationParameters = {
   formSelector: '.form',
   inputSelector: '.form__input',

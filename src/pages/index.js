@@ -76,7 +76,6 @@ function createCard(cardData) {
           .then((updatedCard) => likeCallback(updatedCard.likes))
           .catch((err) => {
             console.log('Ошибка', err);
-
           })
       } else {
         api
@@ -85,7 +84,6 @@ function createCard(cardData) {
           .then((updatedCard) => likeCallback(updatedCard.likes))
           .catch((err) => {
             console.log('Ошибка', err);
-
           })
       }
     },
@@ -126,7 +124,7 @@ function handleCardClick(name, link) {
   popupOpenImage.open(name, link);
 };
 
-/**Добавить первоначальные значения в форму*/
+/**Добавить первоначальные значения в форму редактирования профиля*/
 function handleProfile() {
   const userData = userProfile.getUserInfo();
   nameInput.value = userData.name;
@@ -172,7 +170,6 @@ function formSubmitCard(data) {
     .finally(() => popupAddCard.removeSavingMode())
 };
 
-popupOpenImage.setEventListeners();
 popupDeleteCard.setEventListeners();
 popupEditProfile.setEventListeners();
 popupAddAvatar.setEventListeners();

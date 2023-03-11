@@ -20,7 +20,7 @@ export default class Card {
     return cardElement;
   }
 
-  /**Метод, возвращающий готовую разметку карточек*/
+  /**Вернуть готовую разметку карточек*/
   generateCard() {
     this._element = this._getTemplate();
 
@@ -34,19 +34,20 @@ export default class Card {
     this._buttonLike = this._element.querySelector('.card__button-like');
     this._likeCounter = this._element.querySelector('.card__like-counter');
     this._likeCounter.textContent = this._likes.length;
+
     this._buttonTrash = this._element.querySelector('.card__button-trash');
 
     if(!this._isOwnerCard()) {
       this._buttonTrash.remove();
     }
-    this.toogleButtonLike()
 
+    this.toogleButtonLike()
     this._setEventListeners();
 
     return this._element;
   }
 
-  /**Удалить значок корзины, если карточка не моя*/
+  /**Определить владельца карточки*/
   _isOwnerCard() {
     return this._cardData.currentUser._id === this._cardData.owner._id
   }
@@ -58,7 +59,7 @@ export default class Card {
     })
   }
 
-  /**Изменить состояние кнопки*/
+  /**Изменить состояние кнопки лайка*/
   toogleButtonLike() {
     if (this.isLike()) {
       this._buttonLike.classList.add('card__button-like_active');
@@ -72,14 +73,14 @@ export default class Card {
     /**вызвать колбэк снаружи*/
     this._handleCardLike(
       this._cardData,
-      (updatedLikes) => {
-        this._cardData.likes = updatedLikes;
+      (updatedLike) => {
+        this._cardData.likes = updatedLike;
         this.toogleButtonLike();
         this._likeCounter.textContent = this._cardData.likes.length;
       });
   }
 
-  /**Метод удаления карточки*/
+  /**Удалить карточку*/
   _deleteCard() {
     this._element.remove();
     this._element = null;
