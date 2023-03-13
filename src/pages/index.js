@@ -136,7 +136,8 @@ function formSubmitProfile({ name, about }) {
   popupEditProfile.setSavingMode();
   api.updateUserInfo({ name: name, about: about })
     .then((data) => {
-      userProfile.setUserInfo(data)
+      userProfile.setUserInfo(data);
+      popupEditProfile.close();
     })
     .catch((err) => {
       console.log('ERROR', err);
@@ -149,7 +150,8 @@ function formSubmitAvatar({ avatar }) {
   popupAddAvatar.setSavingMode();
   api.updateUserAvatar({ avatar: avatar })
     .then((data) => {
-      userProfile.setUserAvatar(data)
+      userProfile.setUserAvatar(data);
+      popupAddAvatar.close();
     })
     .catch((err) => {
       console.log('ERROR', err);
@@ -163,6 +165,7 @@ function formSubmitCard(data) {
   api.addNewCard({ name: data.name, link: data.link })
     .then((res) => {
       cardsGalegy.addItem(createCard(res));
+      popupAddCard.close();
     })
     .catch((err) => {
       console.log('ERROR', err);
@@ -170,6 +173,7 @@ function formSubmitCard(data) {
     .finally(() => popupAddCard.removeSavingMode())
 };
 
+popupOpenImage.setEventListeners();
 popupDeleteCard.setEventListeners();
 popupEditProfile.setEventListeners();
 popupAddAvatar.setEventListeners();

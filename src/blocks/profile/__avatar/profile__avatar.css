@@ -1,5 +1,6 @@
 .profile__avatar {
   min-width: 120px;
+  width: 100%;
   max-height: 120px;
   height: 100%;
   border-radius: 50%;
@@ -7,7 +8,6 @@
   object-fit: cover;
   object-position: center;
   overflow: hidden;
-  display: block;
 }
 
 .profile__avatar:hover {

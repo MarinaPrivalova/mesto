@@ -12,8 +12,6 @@ export default class PopupWithConfirm extends Popup {
       evt.preventDefault();
       this._confirmStep();
     });
-
-    super.setEventListeners();
   }
 
   setConfirmAction(action) {
